@@ -9,7 +9,9 @@ vad du har arbetat med. Detta dels för att redovisa hur du har jobbat med fels�
 dels för att styrka att det är du själv som står bakom arbetet. Bifoga länk till ditt repo i
 inlämningen
 
- - [ ] För betyget G krävs att den grundläggande funktionaliteten finns, dvs. att användare ska kunna skriva inlägg och se tidigare inlägg på sidan. För VG krävs dessutom att
+ - [ ] För betyget G krävs att den grundläggande funktionaliteten finns, dvs. att användare ska kunna skriva inlägg och se tidigare inlägg på sidan. 
+ 
+ För VG krävs dessutom att
 
 - [ ] Data ska sparas i JSON-format i textfil
 - [ ] Formulären ska valideras på något sätt (t.ex. giltig e-postadress) med lämplig återkoppling till användare som gjort något fel.
