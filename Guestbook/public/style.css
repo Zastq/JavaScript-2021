@@ -13,3 +13,7 @@
 #commentsHtml h3{
     text-align: center;
 }
+
+#errorMessage{
+    text-align: center;
+}

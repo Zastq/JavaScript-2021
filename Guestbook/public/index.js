@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", main);
 
+
 function main(){
+    
+    
     let contentComments = document.getElementById("commentsHtml");
     
     fetch("/commentSubmited").then(response=>response.json()).then(result => {  // har hand om Texten i myfile.json - lägger in på sidan.
@@ -19,20 +22,49 @@ function main(){
         contentComments.append(nameElement, emailElement, commentElement, document.createElement("hr"));
             // Går bara gör en gång, ska vi skicka samma så får vi använda oss utav etc "nameElement.cloneNode(true)""
     });
-
-    
-        
-
     })
+
+
 
 }
 
 function fromOnsubmit(event){  // Har hand om submit/form för att lägga in object/text i filen.
     console.log(event.target);
 
+    const inputName = document.getElementById("inputName");
+    const inputEmail = document.getElementById("inputEmail");
+    const inputComment = document.getElementById("inputComment");
+    const errorMessage = document.getElementById("errorMessage");
+
+    let messages = [];
 
 
-    const data = new FormData(event.target); // Se om det går att göra om till Json istället.
-    fetch("/commentSubmited", { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(Object.fromEntries(data))})  // Går till /test, med metoden "post". Och då skickar den med json data.
+    if (inputName.value === '' || inputName.value == null) {
+        messages.push("Name cannot be empty")
+    } 
+
+
+    if (inputEmail.value === '' || inputEmail.value == null) {
+        messages.push("Email cannot be empty")
+    } else if (!inputEmail.value.match(/^\S+@\S+/)) 
+    {
+        messages.push("Incorrect email input.")
+    }
+
+
+    if (inputComment.value === '' || inputComment.value == null) {
+        messages.push("Comment cannot be empty")
+    } 
+
+
+    if (messages.length == 0) {
+        messages.push("Sucess!")
+
+        const data = new FormData(event.target); // Se om det går att göra om till Json istället.
+        fetch("/commentSubmited", { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(Object.fromEntries(data))})  // Går till /test, med metoden "post". Och då skickar den med json data.
+    }
+
+    errorMessage.innerText = messages.join(", \n");
+
     event.preventDefault();
 };

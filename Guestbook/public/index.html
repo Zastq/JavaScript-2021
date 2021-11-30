@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Index</title>
     <link rel="stylesheet" href="style.css">
     <script src="index.js"></script>
 </head>
+
 <body>
     <div id="formComment">
-    <form onsubmit="fromOnsubmit(event)">
-        <label for="name">Namn:</label>
-        <br>
-        <input type="text" name="name"> <br>
-        <label for="email">Email:</label>
-        <br>
-        <input type="email" name ="email"> <br>
-        <label for="">Comment:</label>
-        <br>
-        <textarea name="comment"></textarea><br>
-        <input type="submit">
-    </form>
-    </div>
+        <form onsubmit="fromOnsubmit(event)">
 
-    <hr>    
+            <label for="name">Name:</label>
+            <br>
+            <div class="formValidation">
+                <input type="text" name="name" id="inputName"> <br>
+            </div>
+
+            <label for="email">Email:</label>
+            <br>
+            <div class="formValidation">
+                <input type="text" name="email" id="inputEmail"> <br>
+            </div>
+
+            <label for="">Comment:</label>
+            <br>
+            <div class="formValidation">
+                <textarea name="comment" id="inputComment"></textarea><br>
+            </div>
+            <input type="submit">
+        </form>
+    </div>
+    <div id="errorMessage"></div>
+    <hr>
     <div id="commentsHtml">
-        <h3>Inlägg</h3>
+        <h3>Posts</h3>
     </div>
 
 </body>
+
 </html>
