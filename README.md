@@ -9,11 +9,11 @@ vad du har arbetat med. Detta dels för att redovisa hur du har jobbat med fels�
 dels för att styrka att det är du själv som står bakom arbetet. Bifoga länk till ditt repo i
 inlämningen
 
- - [ ] För betyget G krävs att den grundläggande funktionaliteten finns, dvs. att användare ska kunna skriva inlägg och se tidigare inlägg på sidan. 
+ - [X] För betyget G krävs att den grundläggande funktionaliteten finns, dvs. att användare ska kunna skriva inlägg och se tidigare inlägg på sidan. 
  
  För VG krävs dessutom att
 
-- [ ] Data ska sparas i JSON-format i textfil
+- [X] Data ska sparas i JSON-format i textfil
 - [ ] Formulären ska valideras på något sätt (t.ex. giltig e-postadress) med lämplig återkoppling till användare som gjort något fel.
 - [ ] Ondskefull input ska hanteras, t.ex. genom att krokodilkäft < ska göras om till escape-sekvensen ”&lt;” för att förhindra att någon skriver in HTML-element eller skript på sidan.
 - [ ]  Någon form av individuell prägel med kreativ funktionalitet ska finnas, t.ex. inloggningsfunktion eller upvotes/downvotes.
