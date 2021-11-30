@@ -1,17 +1,17 @@
 {
   "scripts": {
-    "start1": "nodemon ./Guestbook/Guestbook.js"
+    "start": "nodemon ./Guestbook.js"
   },
   "nodemonConfig": {
     "ignore": [
       "*.json"
-    ],
-    "cwd": "Form"
+    ]
   },
   "dependencies": {
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
-    "upper-case": "^2.0.2"
+    "upper-case": "^2.0.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
