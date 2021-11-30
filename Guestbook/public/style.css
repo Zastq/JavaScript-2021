@@ -1,0 +1,15 @@
+#formComment{
+    background-color: rgb(226, 226, 226);
+    width: 50%;
+    padding: 2rem;
+    text-align: center;
+    margin: auto;
+}
+#commentsHtml{
+    margin: auto;
+    width: 50%;
+}
+
+#commentsHtml h3{
+    text-align: center;
+}

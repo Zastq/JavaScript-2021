@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "start1": "nodemon ./Guestbook/Guestbook.js"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "*.json"
+    ],
+    "cwd": "Form"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "fs": "^0.0.1-security",
+    "upper-case": "^2.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
