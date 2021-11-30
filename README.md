@@ -14,8 +14,8 @@ inlämningen
  För VG krävs dessutom att
 
 - [X] Data ska sparas i JSON-format i textfil
-- [ ] Formulären ska valideras på något sätt (t.ex. giltig e-postadress) med lämplig återkoppling till användare som gjort något fel.
-- [ ] Ondskefull input ska hanteras, t.ex. genom att krokodilkäft < ska göras om till escape-sekvensen ”&lt;” för att förhindra att någon skriver in HTML-element eller skript på sidan.
+- [X] Formulären ska valideras på något sätt (t.ex. giltig e-postadress) med lämplig återkoppling till användare som gjort något fel.
+- [X] Ondskefull input ska hanteras, t.ex. genom att krokodilkäft < ska göras om till escape-sekvensen ”&lt;” för att förhindra att någon skriver in HTML-element eller skript på sidan.
 - [ ]  Någon form av individuell prägel med kreativ funktionalitet ska finnas, t.ex. inloggningsfunktion eller upvotes/downvotes.
 - [ ] Du bifogar en kort skriftlig rapport (pdf - helst inte Word) där du beskriver vad du har gjort för att hantera ovanstående punkter.
 
