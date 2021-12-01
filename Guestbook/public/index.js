@@ -10,23 +10,50 @@ function main(){
         console.log(result);
 
         result.forEach(element => {
-        const nameElement = document.createElement("p");
-        const emailElement = document.createElement("p");
-        const commentElement = document.createElement("p");
-    
+            const nameElement = document.createElement("p");
+            const emailElement = document.createElement("p");
+            const commentElement = document.createElement("p");
+            const counterElement = document.createElement("span");
 
-        nameElement.innerText = "Namn: " + element.name;
-        emailElement.innerText = "Email: " + element.email;
-        commentElement.innerHTML = "Kommentar: " + element.comment;  // InnerHTML så escape sekvenser blir korrekt utskrivna.
 
-        contentComments.append(nameElement, emailElement, commentElement, document.createElement("hr"));
-            // Går bara gör en gång, ska vi skicka samma så får vi använda oss utav etc "nameElement.cloneNode(true)""
-    });
+            const likeButtonElement = document.createElement("button")
+            likeButtonElement.innerHTML = "Like";
+            likeButtonElement.addEventListener("click", function(){
+                likeButton(element.id)
+            })
+
+            const dislikeButtonElement = document.createElement("button")
+            dislikeButtonElement.innerHTML ="Dislike"
+            dislikeButtonElement.addEventListener("click", ()=>{
+                dislikeButton(element.id)
+            })
+        
+            
+
+            nameElement.innerText = "Namn: " + element.name;
+            emailElement.innerText = "Email: " + element.email;
+            commentElement.innerHTML = "Kommentar: " + element.comment;  // InnerHTML så escape sekvenser blir korrekt utskrivna.
+            counterElement.innerText = "Likes: " + element.likes + " ";
+
+            contentComments.append(nameElement, emailElement, commentElement, counterElement, likeButtonElement, dislikeButtonElement, document.createElement("hr"));
+                // Går bara gör en gång, ska vi skicka samma så får vi använda oss utav etc "nameElement.cloneNode(true)""
+        });
     })
 
 
 
 }
+
+function likeButton(id){
+    //console.log("Has Been Clicked", id);
+    fetch("/like/"+ id, { method: "PUT", headers:{"Content-Type":"application/json"}, body:"{}"})
+}
+
+function dislikeButton(id){
+    fetch("/dislike/"+ id, { method: "PUT", headers:{"Content-Type":"application/json"}, body:"{}"})
+}
+
+
 
 function fromOnsubmit(event){  // Har hand om submit/form för att lägga in object/text i filen.
     console.log(event.target);
@@ -60,8 +87,8 @@ function fromOnsubmit(event){  // Har hand om submit/form för att lägga in obj
     if (messages.length == 0) {
         messages.push("Sucess!")
 
-        const data = new FormData(event.target); // Se om det går att göra om till Json istället.
-        fetch("/commentSubmited", { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(Object.fromEntries(data))})  // Går till /test, med metoden "post". Och då skickar den med json data.
+        const data = new FormData(event.target);
+        fetch("/commentSubmited", { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(Object.fromEntries(data))})  // Går till /commentSubmited, med metoden "post". Och då skickar den med json data.
     }
 
     errorMessage.innerText = messages.join(", \n");
