@@ -23,7 +23,7 @@ inlämningen
 
 Bygg en chattapplikation med Node.js genom att gå igenom den tutorial
 (https://socket.io/get-started/chat/) som finns på socket.io:s webbsida.
-För G krävs att du har fått applikationen att fungera och att du har gjort någon av uppgifterna under rubriken ”Homework”.
+- [X] För G krävs att du har fått applikationen att fungera och att du har gjort någon av uppgifterna under rubriken ”Homework”.
 
 För VG krävs att du har gjort minst fem (dvs. ytterligare fyra) av uppgifterna under rubriken ”Homework”;
 - [ ] För VG behöver du dessutom bifoga en kort skriftlig rapport (pdf helst inte Word) där du förtydligar vilka av dessa uppgifter du har utfört.
