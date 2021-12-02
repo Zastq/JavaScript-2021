@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", main);
 
 function main(){
     
-    
     let contentComments = document.getElementById("commentsHtml");
     
     fetch("/commentSubmited").then(response=>response.json()).then(result => {  // har hand om Texten i myfile.json - lägger in på sidan.
@@ -29,7 +28,6 @@ function main(){
             })
         
             
-
             nameElement.innerText = "Namn: " + element.name;
             emailElement.innerText = "Email: " + element.email;
             commentElement.innerHTML = "Kommentar: " + element.comment;  // InnerHTML så escape sekvenser blir korrekt utskrivna.

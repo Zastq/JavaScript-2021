@@ -8,10 +8,7 @@ const port = 3000;
 
 
 app.use(express.urlencoded({
-    extended: true,
-    verify: function(request, response, buffer){
-        request.rawBody=buffer.toString("utf8");
-    }
+    extended: true
 }));
 
 app.use(express.json());
