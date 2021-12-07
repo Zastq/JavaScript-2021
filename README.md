@@ -31,8 +31,8 @@ För VG krävs att du har gjort minst fem (dvs. ytterligare fyra) av uppgifterna
 Homework
 
 - [ ] Broadcast a message to connected users when someone connects or disconnects.
-- [ ] Add support for nicknames.
-- [ ] Don’t send the same message to the user that sent it. Instead, append the message directly as soon as he/she presses enter.
+- [X] Add support for nicknames.
+- [X] Don’t send the same message to the user that sent it. Instead, append the message directly as soon as he/she presses enter.
 - [ ] Add “{user} is typing” functionality.
 - [ ] Show who’s online.
 - [ ] Add private messaging.
