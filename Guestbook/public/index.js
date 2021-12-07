@@ -86,7 +86,39 @@ function fromOnsubmit(event){  // Har hand om submit/form för att lägga in obj
         messages.push("Sucess!")
 
         const data = new FormData(event.target);
-        fetch("/commentSubmited", { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(Object.fromEntries(data))})  // Går till /commentSubmited, med metoden "post". Och då skickar den med json data.
+        fetch("/commentSubmited", { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(Object.fromEntries(data))}).then(response => response.json()).then(element => {
+
+            // Skapar inlägget direkt temporärt utan att uppdatera sidan.
+
+            let contentComments = document.getElementById("commentsHtml");  
+
+            const nameElement = document.createElement("p");
+            const emailElement = document.createElement("p");
+            const commentElement = document.createElement("p");
+            const counterElement = document.createElement("span");
+
+
+            const likeButtonElement = document.createElement("button")
+            likeButtonElement.innerHTML = "Like";
+            likeButtonElement.addEventListener("click", function(){
+                likeButton(element.id)
+            })
+
+            const dislikeButtonElement = document.createElement("button")
+            dislikeButtonElement.innerHTML ="Dislike"
+            dislikeButtonElement.addEventListener("click", ()=>{
+                dislikeButton(element.id)
+            })
+        
+            
+            nameElement.innerText = "Namn: " + element.name;
+            emailElement.innerText = "Email: " + element.email;
+            commentElement.innerHTML = "Kommentar: " + element.comment; 
+            counterElement.innerText = "Likes: " + element.likes + " ";
+
+            contentComments.append(nameElement, emailElement, commentElement, counterElement, likeButtonElement, dislikeButtonElement, document.createElement("hr"));
+        })  // Går till /commentSubmited, med metoden "post". Och då skickar den med json data.
+
     }
 
     errorMessage.innerText = messages.join(", \n");
