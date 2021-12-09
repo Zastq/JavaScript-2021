@@ -58,23 +58,54 @@
         #messages>li:nth-child(odd) {
             background: #efefef;
         }
+
+        #listConnectedUsers{
+            position: fixed;
+            float: right;
+            right: 0;
+            top: 0;
+            width: 10rem;
+            text-align: center;
+            background-color:white;
+        }
+
+        #listConnectedUsers h4{
+            text-decoration: underline;
+        }
+
+        #userPerson{
+            list-style: none;
+            text-align: center;
+        }
+    
+        ul#userPerson{
+          padding: 0;  
+        }
+
     </style>
 </head>
 
 <body>
     <ul id="messages"></ul>
+    <div id=feedback></div>
     <form id="form" action="">
         <input id="input" autocomplete="off" /><button>Send</button>
     </form>
+    <div id="listConnectedUsers">
+        <h4> <span id="userCount">0</span> Users</h4>
+        <ul id="userPerson">
+        </ul>
+    </div>
     <script src="/socket.io/socket.io.js"></script>
     <script>
 
         const messages = document.getElementById('messages');
+        const typingFeedback = document.getElementById('feedback');
         const form = document.getElementById('form');
         const input = document.getElementById('input');
+        const userList = document.getElementById("userPerson")
 
         const userNamePrompt = prompt("Enter a username: ")
-        console.log("Hej!");
 
         const socket = io(undefined, {query: {userName: userNamePrompt }}); // Tar imot en URL, den andra parametern är optional och heter query. I denna Query kan vi skicka med vid första anslutningen.
 
@@ -83,7 +114,48 @@
             item.textContent = msg;
             messages.appendChild(item);
             window.scrollTo(0, document.body.scrollHeight);
+            typingFeedback.innerHTML="";
         }
+
+        socket.on("userCount", function(msg){
+            document.getElementById("userCount").innerHTML=msg;
+        })
+
+        // socket.on("userPerson", function(msg){
+        //     let item = document.createElement("li")
+        //     item.textContent = msg;
+        //     userList.appendChild(item);
+        // })
+
+        socket.on("userList", function(msg){
+
+            // msg är ett object. Det vi gör att vi hämtar alla values som ligger i objektet. 
+
+            // const users = Object.values(msg)
+            // console.log(users); // Skriver ut Värdet
+            // console.log(Object.keys(msg)); // Skriver ut Array med nyklarna.
+            // console.log(msg); // Skriver ut hela objektet.
+            
+            // users.forEach(function(user){
+            //     let item = document.createElement("li")
+            //     item.textContent = user;
+            //     userList.appendChild(item);
+            // })
+
+                userList.innerHTML = "";
+
+                for(const [key, value]of Object.entries(msg)){
+                    let item = document.createElement("li")
+                    item.textContent = value;
+                    item.id = key;
+                    userList.appendChild(item);
+                }
+        })
+
+        socket.on("deleteUserList", function(msg){
+
+        })
+
 
         form.addEventListener("submit", function (e) {
             e.preventDefault();
@@ -99,12 +171,24 @@
                 addChatMessage("Me" + msg); // Detta syns på klient sidan. "Me:  Hejsan"
                 input.value = "";
             }
-
         });
+
 
         socket.on('chat message', addChatMessage);
 
-        
+        socket.on("typing", (userName) =>
+        {
+            typingFeedback.innerHTML=`<p><em>${userName}</em> is typing...</p>`
+        })
+
+        input.addEventListener("keypress", function(){
+            socket.emit("typing", userNamePrompt.value)
+        })
+
+        document.addEventListener("beforeunload", function(){  // gör så att den disconnectar ifall man stänger ner fliken.
+            socket.disconnect()
+
+        })
     </script>
 </body>
 
