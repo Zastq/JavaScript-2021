@@ -17,7 +17,7 @@ inlämningen
 - [X] Formulären ska valideras på något sätt (t.ex. giltig e-postadress) med lämplig återkoppling till användare som gjort något fel.
 - [X] Ondskefull input ska hanteras, t.ex. genom att krokodilkäft < ska göras om till escape-sekvensen ”&lt;” för att förhindra att någon skriver in HTML-element eller skript på sidan.
 - [X]  Någon form av individuell prägel med kreativ funktionalitet ska finnas, t.ex. inloggningsfunktion eller upvotes/downvotes.
-- [ ] Du bifogar en kort skriftlig rapport (pdf - helst inte Word) där du beskriver vad du har gjort för att hantera ovanstående punkter.
+- [X] Du bifogar en kort skriftlig rapport (pdf - helst inte Word) där du beskriver vad du har gjort för att hantera ovanstående punkter.
 
 ### Del 2 - Sockets
 
@@ -27,7 +27,7 @@ Bygg en chattapplikation med Node.js genom att gå igenom den tutorial
 
 - [X] För VG krävs att du har gjort minst fem (dvs. ytterligare fyra) av uppgifterna under rubriken ”Homework”;
 
-- [ ] För VG behöver du dessutom bifoga en kort skriftlig rapport (pdf helst inte Word) där du förtydligar vilka av dessa uppgifter du har utfört.
+- [X] För VG behöver du dessutom bifoga en kort skriftlig rapport (pdf helst inte Word) där du förtydligar vilka av dessa uppgifter du har utfört.
 
 Homework
 
